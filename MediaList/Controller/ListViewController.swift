@@ -29,7 +29,7 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
         mediaTableView.dataSource = self
         mediaTableView.register(UINib(nibName : "MediaTableViewCell", bundle: nil), forCellReuseIdentifier: CellId)
         
-        
+        // creation of the closure of type function in a variable
         let downloadMediasCallback : ((_  mediaList: [MediaResponse]) -> Void) = {(mediaList) -> Void in
             
             self.arrayListMedia += mediaList.compactMap({ (mediaResp) -> MediaResponse? in
