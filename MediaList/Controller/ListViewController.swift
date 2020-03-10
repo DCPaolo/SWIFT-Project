@@ -107,7 +107,7 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "FR-fr")
         formatter.dateFormat = "yyyy-MM-dd"
-        var date = formatter.date(from: arrayListMedia[indexPath.row].yearMedia!)
+        let date = formatter.date(from: arrayListMedia[indexPath.row].yearMedia!)
         formatter.dateFormat = "dd MMMM yyyy"
         
         var newDate : String = ""
