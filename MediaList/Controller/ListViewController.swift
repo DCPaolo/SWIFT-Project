@@ -16,7 +16,7 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
     
     let CellId : String = "mediaCellID"
     
-    var arrayStruct:[MediaResponse] = []
+    var arrayListMedia:[MediaResponse] = []
     
     var imageCache : [String:UIImage] = [:]
     
@@ -32,7 +32,7 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
         
         let downloadMediasCallback : ((_  mediaList: [MediaResponse]) -> Void) = {(mediaList) -> Void in
             
-            self.arrayStruct += mediaList.compactMap({ (mediaResp) -> MediaResponse? in
+            self.arrayListMedia += mediaList.compactMap({ (mediaResp) -> MediaResponse? in
                 return MediaResponse(idMedia: mediaResp.idMedia, titleMedia: mediaResp.titleMedia, descriptionMedia: mediaResp.descriptionMedia, yearMedia: mediaResp.yearMedia, imagePosterMedia: mediaResp.imagePosterMedia, imageBackdropMedia: mediaResp.imageBackdropMedia, popularityMedia: mediaResp.popularityMedia, tagLineMedia: mediaResp.tagLineMedia, runtimeMedia: mediaResp.runtimeMedia, arrayMedia: mediaResp.arrayMedia, trailerMedia: mediaResp.trailerMedia)
             })
             DispatchQueue.main.sync {
@@ -89,27 +89,27 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
      
     // for return the exact number of media found
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayStruct.count
+        return arrayListMedia.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellId, for: indexPath) as! MediaTableViewCell
         
         // if index isn't in movieArray
-        guard arrayStruct.count > indexPath.row else {
+        guard arrayListMedia.count > indexPath.row else {
             return cell
         }
         
         // cellule.label.type of data = the array of struct[row] and the structure
-        cell.titleLabel.text = arrayStruct[indexPath.row].titleMedia
-        cell.descriptionLabel.text = arrayStruct[indexPath.row].descriptionMedia
-        cell.yearLabel.text = arrayStruct[indexPath.row].yearMedia
+        cell.titleLabel.text = arrayListMedia[indexPath.row].titleMedia
+        cell.descriptionLabel.text = arrayListMedia[indexPath.row].descriptionMedia
+        cell.yearLabel.text = arrayListMedia[indexPath.row].yearMedia
         
         
         
         
         
-        guard let urlString : String = arrayStruct[indexPath.row].imagePosterMedia else {
+        guard let urlString : String = arrayListMedia[indexPath.row].imagePosterMedia else {
             return cell
         }
         
@@ -129,7 +129,7 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
     
     // when the cell is selected in list
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let idRow = arrayStruct[indexPath.row].idMedia
+        let idRow = arrayListMedia[indexPath.row].idMedia
         performSegue(withIdentifier: "navSegueDetail", sender: idRow)
         
         tableView.deselectRow(at: indexPath, animated: true)

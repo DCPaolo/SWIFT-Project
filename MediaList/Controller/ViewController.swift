@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     @IBAction func playVideoButton(_ sender: Any) {
         
         //check for know if arraystruct have a trailer and for prevent the crash of the application 
-        if arrayStruct.count > 0{
-            let value =  arrayStruct[0].key
+        if arrayTrailerList.count > 0{
+            let value =  arrayTrailerList[0].key
             
             // add link url in the button
             let urlYoutubeTrailer : String = "https://www.youtube.com/watch?v=\(value)"
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     
     var idMedia : Int?
     
-    var arrayStruct:[VideoTrailer] = []
+    var arrayTrailerList:[VideoTrailer] = []
     
     
     
@@ -88,7 +88,12 @@ class ViewController: UIViewController {
                 
                 self.titleMediaLabel.text = mediaNoneOpt.titleMedia
                 
-                
+                /*let formatter = DateFormatter()
+                formatter.locale = Locale(identifier: "FR-fr")
+                formatter.dateFormat = "yyyy-MM-dd"
+                date = formatter.date(from: mediaNoneOpt.yearMedia!)
+                formatter.dateFormat = "dd-MMMM-yyyy"
+                let newDate = formatter.string(from: date)*/
                 
                 self.yearMediaLabel.text = mediaNoneOpt.yearMedia
                 self.synopsisMediaLabel.text = mediaNoneOpt.descriptionMedia
@@ -137,14 +142,14 @@ class ViewController: UIViewController {
                if let resultKey = mediaReponse?.trailerMedia{
                 if let result = resultKey["results"]{
                     for i in result{
-                        self.arrayStruct.append(i)
+                        self.arrayTrailerList.append(i)
                     }
                 }
                 
                 
                }
-                if self.arrayStruct.count == 0{
-                self.videoButton.isHidden = false
+                if self.arrayTrailerList.count == 0{
+                    self.videoButton.isHidden = true
                 }
                 return
             }
