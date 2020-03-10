@@ -88,14 +88,19 @@ class ViewController: UIViewController {
                 
                 self.titleMediaLabel.text = mediaNoneOpt.titleMedia
                 
-                /*let formatter = DateFormatter()
+                let formatter = DateFormatter()
                 formatter.locale = Locale(identifier: "FR-fr")
                 formatter.dateFormat = "yyyy-MM-dd"
-                date = formatter.date(from: mediaNoneOpt.yearMedia!)
-                formatter.dateFormat = "dd-MMMM-yyyy"
-                let newDate = formatter.string(from: date)*/
+                let date = formatter.date(from: mediaNoneOpt.yearMedia!)
+                formatter.dateFormat = "dd MMMM yyyy"
                 
-                self.yearMediaLabel.text = mediaNoneOpt.yearMedia
+                var newDate : String = ""
+                
+                if let nonOptDate = date{
+                    newDate = formatter.string(from: nonOptDate)
+                }
+                
+                self.yearMediaLabel.text = newDate
                 self.synopsisMediaLabel.text = mediaNoneOpt.descriptionMedia
                 self.subTitileMediaLabel.text = mediaNoneOpt.tagLineMedia
                 

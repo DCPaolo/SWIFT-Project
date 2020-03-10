@@ -103,7 +103,20 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
         // cellule.label.type of data = the array of struct[row] and the structure
         cell.titleLabel.text = arrayListMedia[indexPath.row].titleMedia
         cell.descriptionLabel.text = arrayListMedia[indexPath.row].descriptionMedia
-        cell.yearLabel.text = arrayListMedia[indexPath.row].yearMedia
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "FR-fr")
+        formatter.dateFormat = "yyyy-MM-dd"
+        var date = formatter.date(from: arrayListMedia[indexPath.row].yearMedia!)
+        formatter.dateFormat = "dd MMMM yyyy"
+        
+        var newDate : String = ""
+        
+        if let nonOptDate = date{
+            newDate = formatter.string(from: nonOptDate)
+        }
+        
+        cell.yearLabel.text = newDate
         
         
         
