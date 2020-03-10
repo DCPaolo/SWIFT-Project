@@ -165,6 +165,7 @@
                         <outlet property="subTitileMediaLabel" destination="cvJ-IU-DOt" id="yHr-Yp-897"/>
                         <outlet property="synopsisMediaLabel" destination="loW-k4-fu1" id="Tsw-Bp-kef"/>
                         <outlet property="titleMediaLabel" destination="aCn-e8-5Ut" id="y4t-c8-AEJ"/>
+                        <outlet property="videoButton" destination="7mg-Ls-Ecv" id="u6W-TF-ADs"/>
                         <outlet property="yearMediaLabel" destination="9Cs-2r-4nc" id="5Eg-Gn-Nl2"/>
                     </connections>
                 </viewController>

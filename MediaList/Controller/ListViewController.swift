@@ -24,11 +24,10 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // transfert behavhior to delegate class
         mediaTableView.delegate = self
         mediaTableView.dataSource = self
         mediaTableView.register(UINib(nibName : "MediaTableViewCell", bundle: nil), forCellReuseIdentifier: CellId)
-        
-        
         
         
         let downloadMediasCallback : ((_  mediaList: [MediaResponse]) -> Void) = {(mediaList) -> Void in
@@ -47,7 +46,7 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
         downloadMedias(page : "3", callback: downloadMediasCallback)
     }
     
-    //un callback de type fonction qui prend en paramètre une liste de mediaReponse et qui retourne un type void
+    // a callback fonction type with with list movie in parameter and return and void
     func downloadMedias(page : String, callback : @escaping ((_  mediaList: [MediaResponse]) -> Void) ){
         let session = URLSession.shared
         let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=fe7dc8e24817870c1f6d573dcbc1fc6c&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=\(page)")!
@@ -60,10 +59,10 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
                 callback([])
                 return
             }
+            
             // Check the response
-            // Serialize the data into an object
-
             if let nonNilData = data {
+                // Serialize the data into an object
                 let mediaReponseStruct : MediasResponseStruc? = try? JSONDecoder().decode(MediasResponseStruc.self, from: nonNilData)
                 callback(mediaReponseStruct?.media ?? [])
                 return
@@ -85,13 +84,10 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
      // Pass the selected object to the new view controller.
         
         let secondViewController = segue.destination as! ViewController
-
-        // set a variable in the second view controller with the data to pass
-    
         secondViewController.idMedia = sender as? Int
      }
      
-    
+    // for return the exact number of media found
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayStruct.count
     }
@@ -99,11 +95,12 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellId, for: indexPath) as! MediaTableViewCell
         
+        // if index isn't in movieArray
         guard arrayStruct.count > indexPath.row else {
             return cell
         }
         
-        // cellule.label.type de données = le tableau de structure [l'index].la structure
+        // cellule.label.type of data = the array of struct[row] and the structure
         cell.titleLabel.text = arrayStruct[indexPath.row].titleMedia
         cell.descriptionLabel.text = arrayStruct[indexPath.row].descriptionMedia
         cell.yearLabel.text = arrayStruct[indexPath.row].yearMedia
@@ -130,6 +127,7 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    // when the cell is selected in list
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let idRow = arrayStruct[indexPath.row].idMedia
         performSegue(withIdentifier: "navSegueDetail", sender: idRow)
@@ -140,7 +138,7 @@ class testListViewController: UIViewController, UITableViewDelegate, UITableView
     
     
 }
-
+// to add function in UIImageView
 extension UIImageView {
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()

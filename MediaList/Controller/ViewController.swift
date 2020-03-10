@@ -14,11 +14,15 @@ class ViewController: UIViewController {
     
     @IBAction func playVideoButton(_ sender: Any) {
         
-        //check for know if arraystruct have a trailer and for prevent the crash of the application if it's not the case
-        if arrayStruct[0].key.count > 0{
+        //check for know if arraystruct have a trailer and for prevent the crash of the application 
+        if arrayStruct.count > 0{
             let value =  arrayStruct[0].key
             
+            // add link url in the button
             let urlYoutubeTrailer : String = "https://www.youtube.com/watch?v=\(value)"
+            if let urlTrailer = URL(string: "\(urlYoutubeTrailer)"), !urlTrailer.absoluteString.isEmpty {
+                UIApplication.shared.open(urlTrailer, options: [:], completionHandler: nil)
+            }
 
             // or outside scope use this
             guard let urlTrailer = URL(string: "\(urlYoutubeTrailer)"), !urlTrailer.absoluteString.isEmpty else {
@@ -28,6 +32,7 @@ class ViewController: UIViewController {
         }
         
     }
+    @IBOutlet weak var videoButton: UIButton!
     @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var titleMediaLabel: UILabel!
@@ -41,7 +46,6 @@ class ViewController: UIViewController {
     
     var idMedia : Int?
     
-    //
     var arrayStruct:[VideoTrailer] = []
     
     
@@ -54,6 +58,7 @@ class ViewController: UIViewController {
     
     
 
+    // a callback fonction type with with id movie in parameter
     func downloadMedias(idMedia : Int){
         
         let session = URLSession.shared
@@ -69,9 +74,8 @@ class ViewController: UIViewController {
                 return
             }
             // Check the response
-            // Serialize the data into an objec
-                
             if let nonNilData = data {
+                // Serialize the data into an objec
                 let mediaReponse : MediaResponse? = try? JSONDecoder().decode(MediaResponse.self, from: nonNilData)
                 
                 if let hours = mediaReponse?.runtimeMedia{
@@ -84,16 +88,9 @@ class ViewController: UIViewController {
                 
                 self.titleMediaLabel.text = mediaNoneOpt.titleMedia
                 
-                let formatter = DateFormatter()
-                formatter.locale = Locale(identifier: "FR-fr")
-                formatter.dateFormat = "yyyy-MM-dd"
-                if let date = formatter.date(from: mediaNoneOpt.yearMedia!){
-                formatter.dateFormat = "dd-MMMM-yyyy"
-                let newDate = formatter.string(from: date)
-                
-                self.yearMediaLabel.text = date
                 
                 
+                self.yearMediaLabel.text = mediaNoneOpt.yearMedia
                 self.synopsisMediaLabel.text = mediaNoneOpt.descriptionMedia
                 self.subTitileMediaLabel.text = mediaNoneOpt.tagLineMedia
                 
@@ -146,9 +143,8 @@ class ViewController: UIViewController {
                 
                 
                }
-                
-                if self.arrayStruct[0].key.count == 0{
-                //playVideoButton(Any).isHidden = false
+                if self.arrayStruct.count == 0{
+                self.videoButton.isHidden = false
                 }
                 return
             }
