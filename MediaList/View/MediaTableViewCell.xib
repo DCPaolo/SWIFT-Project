@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="159" id="KGk-i7-Jjw" customClass="MediaTableViewCell" customModule="MediaList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="620" height="159"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="620" height="159"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="vertical_image" translatesAutoresizingMaskIntoConstraints="NO" id="cwW-6V-HPV">
+                        <rect key="frame" x="20" y="20" width="90" height="119"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="I3c-WA-ACS"/>
+                            <constraint firstAttribute="width" secondItem="cwW-6V-HPV" secondAttribute="height" multiplier="90:119" id="e4M-GL-avN"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Nea-7j-f2G">
+                        <rect key="frame" x="130" y="20" width="470" height="102"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Gran Torino" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k54-Xa-cyw">
+                                <rect key="frame" x="0.0" y="0.0" width="470" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.92115455869999996" green="0.94492667910000006" blue="0.96077448129999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2008" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqn-kr-NmQ" userLabel="Year">
+                                <rect key="frame" x="0.0" y="20.5" width="470" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.92115455869999996" green="0.94492667910000006" blue="0.96077448129999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11f-uw-Zt7">
+                                <rect key="frame" x="0.0" y="41" width="470" height="61"/>
+                                <string key="text">Walt Kowalski, un vétéran de la guerre de Corée, vient de perdre sa femme. Seul, misanthrope, bougon et raciste, il veille jalousement sur sa Ford Gran Torino, râlant sans cesse contre les habitants de son quartier, en majorité d'origine asiatique. Un jour, son jeune voisin, Tao, tente de lui voler sa voiture sous la pression d'un gang. Walt s'aperçoit bientôt que l'adolescent est littéralement harcelé par les jeunes caïds. Prenant la défense de Tao, Walt devient malgré lui le héros du quartier.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.92115455869999996" green="0.94492667910000006" blue="0.96077448129999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Nea-7j-f2G" secondAttribute="bottom" constant="20" id="VRX-Zp-wQd"/>
+                    <constraint firstItem="Nea-7j-f2G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="ZrN-f8-v6M"/>
+                    <constraint firstItem="cwW-6V-HPV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ZwX-a9-IHr"/>
+                    <constraint firstItem="Nea-7j-f2G" firstAttribute="leading" secondItem="cwW-6V-HPV" secondAttribute="trailing" constant="20" id="gU4-uP-0ME"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cwW-6V-HPV" secondAttribute="bottom" constant="15" id="gZD-Lu-DgC"/>
+                    <constraint firstItem="cwW-6V-HPV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lNh-Pn-gkP"/>
+                    <constraint firstAttribute="trailing" secondItem="Nea-7j-f2G" secondAttribute="trailing" constant="20" id="sDG-Iz-ZTA"/>
+                    <constraint firstItem="cwW-6V-HPV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="xLz-Qt-liW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="11f-uw-Zt7" id="Jtx-xl-MaW"/>
+                <outlet property="leftImage" destination="cwW-6V-HPV" id="qEc-xO-P4n"/>
+                <outlet property="titleLabel" destination="k54-Xa-cyw" id="I11-qW-b4J"/>
+                <outlet property="yearLabel" destination="pqn-kr-NmQ" id="XgO-qX-OW9"/>
+            </connections>
+            <point key="canvasLocation" x="-315.94202898550725" y="88.058035714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="vertical_image" width="1000" height="1500"/>
+    </resources>
+</document>
